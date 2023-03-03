@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fba2b4281d809cc4e9fc542c4bd3609d, type: 3}
-  m_Name: TechStructure
+  m_Name: Tank
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 21300000, guid: fc2b9e6969f89194e8b46353f1a47f80, type: 3}
-  _productionSprite: {fileID: 21300000, guid: 109604fc36185e043aecda1cd9d99ea9, type: 3}
+  _sprite: {fileID: 21300000, guid: 109604fc36185e043aecda1cd9d99ea9, type: 3}
+  _productionSprite: {fileID: 0}
   _shape:
-    _width: 4
-    _height: 3
-    _shape: 010101010101010101010101
-  _type: 1
+    _width: 1
+    _height: 1
+    _shape: 01
+  _type: 2
   _canDrop: 1
-  _canProduce: 1
-  _defination: Tech Structure provide cutting-edge military technology to  forces.
+  _canProduce: 0
+  _defination: 
   _itemDefination: {fileID: 11400000}
   _unitGameobject: {fileID: 8206099384735439573, guid: 65dfabab9da81484a828236b3d281070, type: 3}
   _position: {x: 0, y: 0}

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   downLeftTileIndex: {x: 0, y: 0}
   ItemDefinition: {fileID: 11400000, guid: f1132963865129e40a5601fcafce875b, type: 2}
+  ItemSelection: {fileID: 0}
 --- !u!65 &6228871480960970355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59,8 +60,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2805481, y: 1.1084824, z: 1}
-  m_Center: {x: 0.0018615723, y: 0.0018730164, z: 0}
+  m_Size: {x: 1.3022726, y: 1.0939995, z: 1}
+  m_Center: {x: 0.54135084, y: 0.46532696, z: 0}
 --- !u!1 &8120077000561005366
 GameObject:
   m_ObjectHideFlags: 0

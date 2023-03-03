@@ -19,7 +19,7 @@ public class UnitSpawnButton : MonoBehaviour
         // spawn tank
         GameObject tmpUnit = Instantiate(Unit, spawnLocation.transform.position, spawnLocation.transform.rotation);
         tmpUnit.transform.SetParent(spawnLocation.transform);
-        tmpUnit.GetComponent<Soldier>().index = spawnLocation.GetComponent<GroundTile>().index;
+        tmpUnit.GetComponent<Unit>().index = spawnLocation.GetComponent<GroundTile>().index;
         // set the location flags
         spawnLocation.GetComponent<GroundTile>().isOccupied = true;
         spawnLocation.GetComponent<GroundTile>().hasUnit = true;
