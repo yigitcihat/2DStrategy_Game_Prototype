@@ -14,6 +14,6 @@ public class PowerPlant : Build
     {
         base.OnMouseDown();
         //spawn.gameObject.SetActive(false);
-        ItemSelection.HandleItemHover(ItemDefinition);
+        ItemSelection.HandleItemHover(ItemDefinition,gameObject);
     }
 }

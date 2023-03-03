@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Soldier
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: 1129bac8ab34ed2448d95a4a1d9c5337, type: 3}
+  _productionSprite: {fileID: 0}
   _shape:
     _width: 1
     _height: 1
@@ -21,5 +22,6 @@ MonoBehaviour:
   _canDrop: 1
   _canProduce: 0
   _defination: 
-  _itemDefination: {fileID: 0}
+  _itemDefination: {fileID: 11400000}
+  _unitGameobject: {fileID: 8206099384735439573, guid: e12a5510badcb4f46ab6b5d03a46177f, type: 3}
   _position: {x: 0, y: 0}

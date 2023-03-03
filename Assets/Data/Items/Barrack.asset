@@ -23,4 +23,6 @@ MonoBehaviour:
   _canProduce: 1
   _defination: The Barrack is the infantry training facility
   _itemDefination: {fileID: 11400000}
+  _unit: {fileID: 11400000, guid: 994fc8a3bfa231d4090942a5250e7c8c, type: 2}
+  _unitGameobject: {fileID: 8206099384735439573, guid: e12a5510badcb4f46ab6b5d03a46177f, type: 3}
   _position: {x: 0, y: 0}

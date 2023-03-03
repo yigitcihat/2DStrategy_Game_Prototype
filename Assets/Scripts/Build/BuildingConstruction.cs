@@ -30,7 +30,7 @@ public class BuildingConstruction : MonoBehaviour, IBeginDragHandler, IDragHandl
     public void OnBeginDrag(PointerEventData eventData)
     {
         draggedObject = gameObject;
-        _itemSelection.HandleItemHover(ItemDefinition);
+        _itemSelection.HandleItemHover(ItemDefinition,gameObject);
         startPos = transform.position;
         initialParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;

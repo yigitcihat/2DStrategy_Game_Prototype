@@ -13,7 +13,7 @@ public class Build : MonoBehaviour
     protected Text nameArea;
     protected string buildingName;
     protected Button spawn;
-
+    private Vector2 spawnAreaLimits = new Vector2(1,1);
     // get the information panel elements
     protected virtual void Start()
     {
@@ -29,13 +29,13 @@ public class Build : MonoBehaviour
         //information.gameObject.SetActive(true);
         //information.sprite = splash;
         //nameArea.text = buildingName;
-        ItemSelection.HandleItemHover(ItemDefinition);
+        ItemSelection.HandleItemHover(ItemDefinition, gameObject);
     }
     // color when cursor is over the building
     protected void OnMouseEnter()
     {
         transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.green;
-        ItemSelection.HandleItemHover(ItemDefinition);
+        ItemSelection.HandleItemHover(ItemDefinition, gameObject);
         
     }
     // reset color when cursor exits
@@ -53,5 +53,111 @@ public class Build : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             spriteRenderer.color = Color.white;
         }
+    }
+    public GameObject getSpawnLocation()
+    {
+        Vector2 spawnpoint = downLeftTileIndex;
+        GameObject[,] tileMap = TileManager.instance.tilemap;
+        GameObject firstUnitTile = null;
+        bool unitFound = false;
+        //first candidate grid
+        spawnpoint.x--;
+        spawnpoint.y--;
+        // check for an empty grid around the barracks
+        for (int i = (int)spawnpoint.x; i < (int)spawnpoint.x + spawnAreaLimits.x; i++)
+        {
+            int j = (int)spawnpoint.y;
+            if (isGridAvailable(i, j))
+            {
+                if (!tileMap[i, j].GetComponent<GroundTile>().isOccupied)
+                {
+                    return tileMap[i, j];
+                }
+            }
+            if (!unitFound && tileMap[i, j].GetComponent<GroundTile>().hasUnit)
+            {
+                firstUnitTile = tileMap[i, j];
+                unitFound = true;
+            }
+        }
+        spawnpoint.x += 5;
+        for (int j = (int)spawnpoint.y; j < (int)spawnpoint.y + spawnAreaLimits.y; j++)
+        {
+            int i = (int)spawnpoint.x;
+            if (isGridAvailable(i, j))
+            {
+                if (!tileMap[i, j].GetComponent<GroundTile>().isOccupied)
+                {
+                    return tileMap[i, j];
+                }
+            }
+            if (!unitFound && tileMap[i, j].GetComponent<GroundTile>().hasUnit)
+            {
+                firstUnitTile = tileMap[i, j];
+                unitFound = true;
+            }
+        }
+        spawnpoint.y += 5;
+        for (int i = (int)spawnpoint.x; i > (int)spawnpoint.x - spawnAreaLimits.x; i--)
+        {
+            int j = (int)spawnpoint.y;
+            if (isGridAvailable(i, j))
+            {
+                if (!tileMap[i, j].GetComponent<GroundTile>().isOccupied)
+                {
+                    return tileMap[i, j];
+                }
+            }
+            if (!unitFound && tileMap[i, j].GetComponent<GroundTile>().hasUnit)
+            {
+                firstUnitTile = tileMap[i, j];
+                unitFound = true;
+            }
+        }
+        spawnpoint.x -= 5;
+        for (int j = (int)spawnpoint.y; j > (int)spawnpoint.y - spawnAreaLimits.y; j--)
+        {
+            int i = (int)spawnpoint.x;
+            if (isGridAvailable(i, j))
+            {
+                if (!tileMap[i, j].GetComponent<GroundTile>().isOccupied)
+                {
+                    return tileMap[i, j];
+                }
+            }
+            if (!unitFound && tileMap[i, j].GetComponent<GroundTile>().hasUnit)
+            {
+                firstUnitTile = tileMap[i, j];
+                unitFound = true;
+            }
+        }
+
+        // if all the grids are full level up the first tank found
+        if (unitFound)
+        {
+            Vector2 unitIndex = firstUnitTile.transform.GetComponent<GroundTile>().index;
+            tileMap[(int)unitIndex.x, (int)unitIndex.y].transform.GetChild(0).GetComponent<Unit>().LevelUp(1);
+        }
+        // no possible spawn location
+        else
+        {
+            IEnumerator coroutine = Warning(transform.GetChild(0).GetComponent<SpriteRenderer>());
+            StartCoroutine(coroutine);
+        }
+
+        return null;
+
+    }
+    private bool isGridAvailable(int i, int j)
+    {
+        if (i >= TileManager.instance.gridWidth || j >= TileManager.instance.gridHeight)
+        {
+            return false;
+        }
+        else if (i < 0 || j < 0)
+        {
+            return false;
+        }
+        return true;
     }
 }

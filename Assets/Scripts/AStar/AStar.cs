@@ -22,11 +22,11 @@ public class AStar : MonoBehaviour
         // works when both the source and the destination is set
         if (player != null && hasTarget == true)
         {
-            List<GroundTile> path = FindPath(player.GetComponent<Tank>().index, targetIndex);
+            List<GroundTile> path = FindPath(player.GetComponent<Unit>().index, targetIndex);
             if (path != null)
             {
                 // set the path of the unit
-                //player.gameObject.GetComponent<Unit>().MoveOnNewPath(path);
+                player.gameObject.GetComponent<Unit>().MoveOnNewPath(path);
             }
             // reset the variables
             player = null;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Scriptable Object representing an Production Item
@@ -13,7 +14,8 @@ public class ItemDefinition : ScriptableObject, IProductionItem
     [SerializeField] private bool _canDrop = true;
     [SerializeField] public bool _canProduce = true;
     [SerializeField] private string _defination;
-    [SerializeField] private ItemDefinition _itemDefination;
+    [SerializeField] public ItemDefinition _itemDefination;
+    [SerializeField] public GameObject _unitGameobject;
     [SerializeField, HideInInspector] private Vector2Int _position = Vector2Int.zero;
 
     /// <summary>
@@ -62,6 +64,8 @@ public class ItemDefinition : ScriptableObject, IProductionItem
     public bool canDrop { get => _canDrop; set => _canDrop = value; }
     public bool canProduce { get => _canProduce; set => _canProduce = value; }
     public ItemDefinition itemDefination { get => _itemDefination; set => _itemDefination = value; }
+    public GameObject Object { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
 
 
 

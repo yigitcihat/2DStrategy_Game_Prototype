@@ -37,12 +37,12 @@ public class Unit : MonoBehaviour {
         // select unit
         if( Input.GetMouseButtonDown(0))
         {
-            information.gameObject.SetActive(true);
-            information.sprite = splash;
+            //information.gameObject.SetActive(true);
+            //information.sprite = splash;
+            Debug.Log("Soldier Selected");
+            //spawn.gameObject.SetActive(false);
 
-            spawn.gameObject.SetActive(false);
-
-            nameArea.text = "LEVEL " + level + " " +unitName;
+            //nameArea.text = "LEVEL " + level + " " +unitName;
 
             GameManager.instance.sourceUnit = transform;
         }
@@ -52,6 +52,8 @@ public class Unit : MonoBehaviour {
             // move unit to unit
             GameManager.instance.destinationIndex = index;
             GameManager.instance.HandleMovement();
+            Debug.Log("SoldierMove");
+            
         }
     }
     protected void OnMouseEnter()
@@ -94,7 +96,8 @@ public class Unit : MonoBehaviour {
         transform.SetParent(null);
         // move
         while ( true )
-        {   
+        {
+            Debug.Log("On way");
             if( (Vector2) transform.position == currentPosition)
             {   
                 // reset the flags after passing the tile
@@ -134,8 +137,8 @@ public class Unit : MonoBehaviour {
     //status text
     IEnumerator UpdateStatus( int level )
     {
-        status.text = unitName + " leveled up by " + level;
+        //status.text = unitName + " leveled up by " + level;
         yield return new WaitForSeconds(1.0f);
-        status.text = "";
+        //status.text = "";
     }
 }

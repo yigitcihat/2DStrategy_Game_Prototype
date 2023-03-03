@@ -28,7 +28,7 @@ public class GridItemController : MonoBehaviour,
     // The dragged item is static and shared by all controllers
     // This way items can be moved between controllers easily
     private static ProductionDraggedItem _draggedItem;
-
+    public GameObject Object;
     /// <inheritdoc />
     public Action<IProductionItem> onItemHovered { get; set; }
 

@@ -28,8 +28,8 @@ public class GroundTile : MonoBehaviour, IPQItem<GroundTile>
         // rightclick
         if (Input.GetMouseButtonDown(1))
         {
-            //GameManager.instance.destinationIndex = index;
-            //GameManager.instance.HandleMovement();
+            GameManager.instance.destinationIndex = index;
+            GameManager.instance.HandleMovement();
         }
     }
     // Flash warning

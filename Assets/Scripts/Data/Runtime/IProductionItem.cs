@@ -27,7 +27,7 @@ public interface IProductionItem
     /// of this items shape
     /// </summary>
     bool IsPartOfShape(Vector2Int localPosition);
-
+    public GameObject Object { get; set; }
     /// <summary>
     /// Returns true if this item can be dropped on the ground
     /// </summary>
