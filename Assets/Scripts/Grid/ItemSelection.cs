@@ -23,8 +23,7 @@ public class ItemSelection : MonoBehaviour
             controller.onItemHovered += HandleItemHover;
         }
     }
-
-    private void HandleItemHover(IProductionItem item)
+    public void HandleItemHover(IProductionItem item)
     {
         if (item != null && item.canDrop)
         {
@@ -34,9 +33,19 @@ public class ItemSelection : MonoBehaviour
             _definationImage.sprite = (item as ItemDefinition).sprite;
             _productionFrame.SetActive(false);
             _productionImage.sprite = null;
+            if ((item as ItemDefinition).canProduce)
+            {
+                _productionFrame.SetActive(true);
+                _productionImage.sprite = (item as ItemDefinition).productionSprite;
+            }
+            else
+            {
+                _productionFrame.SetActive(false);
+                _productionImage.sprite = null;
+            }
         }
     }
-    private void HandleItemPicked(IProductionItem item)
+    public void HandleItemPicked(IProductionItem item)
     {
         if (item != null)
         {

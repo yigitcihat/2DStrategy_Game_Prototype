@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 public class BuildingConstruction : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public static GameObject draggedObject;
-
+    public ItemDefinition ItemDefinition;
+    private ItemSelection _itemSelection;
     protected GameObject building;
     protected Vector2 constructionSize;
 
@@ -22,11 +23,14 @@ public class BuildingConstruction : MonoBehaviour, IBeginDragHandler, IDragHandl
     public virtual void Start()
     {
         coloredTiles = new List<SpriteRenderer>();
+        _itemSelection= FindObjectOfType<ItemSelection>();
     }
     // Drag handlers
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
         draggedObject = gameObject;
+        _itemSelection.HandleItemHover(ItemDefinition);
         startPos = transform.position;
         initialParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -60,7 +64,7 @@ public class BuildingConstruction : MonoBehaviour, IBeginDragHandler, IDragHandl
                 // no obstacle on construction site
                 foreach (GameObject tile in chosenGrids[0])
                 {
-                    tile.GetComponent<SpriteRenderer>().color = Color.blue;
+                    tile.GetComponent<SpriteRenderer>().color = Color.green;
                     coloredTiles.Add(tile.GetComponent<SpriteRenderer>());
                 }
                 // obstacle on construction site

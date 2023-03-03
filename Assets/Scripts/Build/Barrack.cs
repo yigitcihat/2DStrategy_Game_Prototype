@@ -18,8 +18,9 @@ public class Barrack : Build
     protected override void OnMouseDown()
     {
         base.OnMouseDown();
+        ItemSelection.HandleItemHover(ItemDefinition);
         // button active
-        spawn.gameObject.SetActive(true);
+        //spawn.gameObject.SetActive(true);
         //spawn.GetComponent<SpawnButton>().spawnerBarracks = transform.gameObject;
     }
     // get the unit spawn location

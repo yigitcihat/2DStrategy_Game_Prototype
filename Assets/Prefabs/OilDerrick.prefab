@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   downLeftTileIndex: {x: 0, y: 0}
+  ItemDefinition: {fileID: 11400000, guid: b11ce13a0d4495e4dabedf00b13e6042, type: 2}
 --- !u!65 &7251129640841248335
 BoxCollider:
   m_ObjectHideFlags: 0

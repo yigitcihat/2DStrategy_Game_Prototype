@@ -3766,6 +3766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab7aceb518e3cc943850860b59fb544d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: f1132963865129e40a5601fcafce875b, type: 2}
   Barracks: {fileID: 4389842209445733849, guid: 3171ad91a1bb2104eb645cdd3843e628, type: 3}
 --- !u!114 &5251822602332696428
 MonoBehaviour:
@@ -3837,6 +3838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab7aceb518e3cc943850860b59fb544d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: f1132963865129e40a5601fcafce875b, type: 2}
   Barracks: {fileID: 4389842209445733849, guid: 3171ad91a1bb2104eb645cdd3843e628, type: 3}
 --- !u!114 &5251822602689689252
 MonoBehaviour:
@@ -3908,6 +3910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab7aceb518e3cc943850860b59fb544d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: f1132963865129e40a5601fcafce875b, type: 2}
   Barracks: {fileID: 4389842209445733849, guid: 3171ad91a1bb2104eb645cdd3843e628, type: 3}
 --- !u!114 &5251822602715062595
 MonoBehaviour:
@@ -3971,6 +3974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ddb6067ac8bfc646b20e63b7dd84b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: b11ce13a0d4495e4dabedf00b13e6042, type: 2}
   OilDerrick: {fileID: 1912311199019862732, guid: c38402052937d4949a74b8cd11d9f61a, type: 3}
 --- !u!114 &5758092837319635448
 MonoBehaviour:
@@ -4034,6 +4038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ddb6067ac8bfc646b20e63b7dd84b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: b11ce13a0d4495e4dabedf00b13e6042, type: 2}
   OilDerrick: {fileID: 1912311199019862732, guid: c38402052937d4949a74b8cd11d9f61a, type: 3}
 --- !u!114 &5758092837539268088
 MonoBehaviour:
@@ -4097,6 +4102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444f63b5b9f8fe449bd7341a368e49a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: e485ed155dcb8124b9506a5783e54a4a, type: 2}
   PowerPlant: {fileID: 5185085390456614377, guid: dbeb4da55909aac478abbfb0d54a2787, type: 3}
 --- !u!114 &7180683129453208764
 MonoBehaviour:
@@ -4160,6 +4166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444f63b5b9f8fe449bd7341a368e49a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: e485ed155dcb8124b9506a5783e54a4a, type: 2}
   PowerPlant: {fileID: 5185085390456614377, guid: dbeb4da55909aac478abbfb0d54a2787, type: 3}
 --- !u!114 &7180683129579487740
 MonoBehaviour:
@@ -4231,6 +4238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c53b4c365690c4eb7fd295a995db24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: 99ad84a40ef84b8438ba70dcab0e85e9, type: 2}
   Airfield: {fileID: 7737441044256732568, guid: c26d71590dded8c4a8a0a1dcc88c9cd3, type: 3}
 --- !u!114 &7737441044204141577
 MonoBehaviour:
@@ -4302,6 +4310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c53b4c365690c4eb7fd295a995db24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: 99ad84a40ef84b8438ba70dcab0e85e9, type: 2}
   Airfield: {fileID: 7737441044256732568, guid: c26d71590dded8c4a8a0a1dcc88c9cd3, type: 3}
 --- !u!114 &7737441044268259411
 MonoBehaviour:
@@ -4373,6 +4382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c53b4c365690c4eb7fd295a995db24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: 99ad84a40ef84b8438ba70dcab0e85e9, type: 2}
   Airfield: {fileID: 7737441044256732568, guid: c26d71590dded8c4a8a0a1dcc88c9cd3, type: 3}
 --- !u!114 &7737441045615191136
 MonoBehaviour:
@@ -4484,6 +4494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3de2c300b5601e46a1383e036e30dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: 3ecdc717a75391d4ab662637efcf8c25, type: 2}
   TechStructure: {fileID: 8206099384735439573, guid: 30f881745d66c0e459f65d3f218ad87c, type: 3}
 --- !u!114 &8359225756946746954
 MonoBehaviour:
@@ -4555,6 +4566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3de2c300b5601e46a1383e036e30dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemDefinition: {fileID: 11400000, guid: 3ecdc717a75391d4ab662637efcf8c25, type: 2}
   TechStructure: {fileID: 8206099384735439573, guid: 30f881745d66c0e459f65d3f218ad87c, type: 3}
 --- !u!114 &8359225757177500975
 MonoBehaviour:

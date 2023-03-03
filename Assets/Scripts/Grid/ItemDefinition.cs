@@ -11,7 +11,7 @@ public class ItemDefinition : ScriptableObject, IProductionItem
     [SerializeField] private GridShape _shape = null;
     [SerializeField] private ItemType _type = ItemType.Unit;  
     [SerializeField] private bool _canDrop = true;
-    [SerializeField] private bool _canProduce = true;
+    [SerializeField] public bool _canProduce = true;
     [SerializeField] private string _defination;
     [SerializeField] private ItemDefinition _itemDefination;
     [SerializeField, HideInInspector] private Vector2Int _position = Vector2Int.zero;

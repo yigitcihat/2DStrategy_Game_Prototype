@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 public class Build : MonoBehaviour
 {
     public Vector2 downLeftTileIndex;
-
+    public ItemDefinition ItemDefinition;
+    public ItemSelection ItemSelection;
     protected Sprite splash;
     protected Image information;
     protected Text nameArea;
@@ -16,6 +17,7 @@ public class Build : MonoBehaviour
     // get the information panel elements
     protected virtual void Start()
     {
+        ItemSelection = FindObjectOfType<ItemSelection>();
         //information = UIManager.instance.informationImage;
         //nameArea = UIManager.instance.informationText;
         //spawn = UIManager.instance.spawn;
@@ -23,14 +25,18 @@ public class Build : MonoBehaviour
     // set the information menu
     protected virtual void OnMouseDown()
     {
+
         //information.gameObject.SetActive(true);
         //information.sprite = splash;
         //nameArea.text = buildingName;
+        ItemSelection.HandleItemHover(ItemDefinition);
     }
     // color when cursor is over the building
     protected void OnMouseEnter()
     {
         transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.green;
+        ItemSelection.HandleItemHover(ItemDefinition);
+        
     }
     // reset color when cursor exits
     protected void OnMouseExit()

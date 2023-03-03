@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   downLeftTileIndex: {x: 0, y: 0}
+  ItemDefinition: {fileID: 11400000, guid: e485ed155dcb8124b9506a5783e54a4a, type: 2}
