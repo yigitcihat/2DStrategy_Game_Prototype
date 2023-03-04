@@ -147,6 +147,7 @@ public class AStar : MonoBehaviour
 
         while (current != sourceTile)
         {
+            //
             path.Add(current);
             current = current.parentTile;
         }

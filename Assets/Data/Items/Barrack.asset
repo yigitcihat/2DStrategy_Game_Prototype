@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Barrack
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: ee33ed88f4e7b03459b83e773f48ea3c, type: 3}
+  Health: 100
+  DamagePower: 0
   _productionSprite: {fileID: 21300000, guid: 7d2f2bda0f121a045b08596498b8fb98, type: 3}
   _shape:
     _width: 4

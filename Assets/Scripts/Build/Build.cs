@@ -13,7 +13,7 @@ public class Build : MonoBehaviour
     protected Text nameArea;
     protected string buildingName;
     protected Button spawn;
-    private Vector2 spawnAreaLimits = new Vector2(1,1);
+    private Vector2 spawnAreaLimits = new Vector2(6,6);
     // get the information panel elements
     protected virtual void Start()
     {
@@ -130,19 +130,6 @@ public class Build : MonoBehaviour
                 firstUnitTile = tileMap[i, j];
                 unitFound = true;
             }
-        }
-
-        // if all the grids are full level up the first tank found
-        if (unitFound)
-        {
-            Vector2 unitIndex = firstUnitTile.transform.GetComponent<GroundTile>().index;
-            tileMap[(int)unitIndex.x, (int)unitIndex.y].transform.GetChild(0).GetComponent<Unit>().LevelUp(1);
-        }
-        // no possible spawn location
-        else
-        {
-            IEnumerator coroutine = Warning(transform.GetChild(0).GetComponent<SpriteRenderer>());
-            StartCoroutine(coroutine);
         }
 
         return null;

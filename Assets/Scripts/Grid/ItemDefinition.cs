@@ -8,14 +8,16 @@ using UnityEngine.UI;
 public class ItemDefinition : ScriptableObject, IProductionItem
 {
     [SerializeField] private Sprite _sprite = null;
+    public float Health;
+    public float DamagePower;
     [SerializeField] private Sprite _productionSprite = null;
     [SerializeField] private GridShape _shape = null;
     [SerializeField] private ItemType _type = ItemType.Unit;  
     [SerializeField] private bool _canDrop = true;
     [SerializeField] public bool _canProduce = true;
     [SerializeField] private string _defination;
-    [SerializeField] public ItemDefinition _itemDefination;
-    [SerializeField] public GameObject _unitGameobject;
+    public ItemDefinition _itemDefination;
+    public GameObject _unitGameobject;
     [SerializeField, HideInInspector] private Vector2Int _position = Vector2Int.zero;
 
     /// <summary>

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject aStar;
 
 
+
     private void Awake()
     {
         if (instance != null && instance != this)

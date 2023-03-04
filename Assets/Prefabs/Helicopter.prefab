@@ -61,7 +61,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: {x: 0, y: 0}
   path: []
-  level: 1
+  AttackPower: 10
+  HealthPoint: 10
 --- !u!1 &9128748401035771697
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Tank
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: 109604fc36185e043aecda1cd9d99ea9, type: 3}
+  Health: 10
+  DamagePower: 5
   _productionSprite: {fileID: 0}
   _shape:
     _width: 1
