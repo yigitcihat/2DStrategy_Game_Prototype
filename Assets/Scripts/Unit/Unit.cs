@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
@@ -12,12 +13,9 @@ public class Unit : MonoBehaviour
     public List<GroundTile> path;
     public float AttackPower;
     public float HealthPoint = 10f;
+    public Build CreatorBuild;
     protected float speed = 0.02f;
     protected Sprite splash;
-    protected Image information;
-    protected Button spawn;
-    protected Text nameArea;
-    protected Text status;
     protected string unitName;
     protected virtual void Start()
     {
@@ -94,8 +92,19 @@ public class Unit : MonoBehaviour
                     if (path[currentIndex].transform.childCount > 0)
                     {
                         Unit targetUnit = path[currentIndex].transform.GetChild(0).GetComponent<Unit>();
-                        StartCoroutine(AttackTargetUnit(targetUnit));
-                        StopCoroutine("MoveOnPath");
+                        Build targetBuild = targetUnit.CreatorBuild;
+                        if (targetBuild != null)
+                        {
+                            Debug.Log("Attacked" + targetBuild.gameObject.name);
+                            StartCoroutine(AttackTargetBuilding(targetBuild));
+                            StopCoroutine("MoveOnPath");
+                        }
+                        else if (targetUnit != null)
+                        {
+                            StartCoroutine(AttackTargetUnit(targetUnit));
+                            StopCoroutine("MoveOnPath");
+                        }
+                       
                         //Destroy(gameObject);
                     }
                 }
@@ -106,12 +115,13 @@ public class Unit : MonoBehaviour
                 // path end
                 if (currentIndex >= path.Count)
                 {
-
+                    
 
                     path[currentIndex - 1].isOccupied = true;
                     path[currentIndex - 1].hasUnit = true;
                     transform.SetParent(path[currentIndex - 1].transform);
-                    Debug.Log("Take Position");
+                    
+                   
                     yield break;
                     //}
 
@@ -148,11 +158,28 @@ public class Unit : MonoBehaviour
         }
 
     }
-    IEnumerator GetDamage(float damage)
+    IEnumerator AttackTargetBuilding(Build TargetBuild)
+    {
+        Debug.Log("Attacked" + TargetBuild.gameObject.name);
+
+        while (TargetBuild.HealthPoint > 0)
+        {
+            StartCoroutine(TargetBuild.GetDamage(AttackPower));
+            if (HealthPoint <= 0 || TargetBuild.HealthPoint <= 0)
+            {
+                StopCoroutine("AttackTargetBuilding");
+
+            }
+
+            yield return new WaitForSeconds(0.3f);
+        }
+
+    }
+    public IEnumerator GetDamage(float damage)
     {
         HealthPoint -= damage;
         GetComponentInChildren<SpriteRenderer>().color = Color.red;
-        
+        transform.DOShakePosition(0.1f,0.5f,5,45);
         yield return new WaitForSeconds(0.15f);
         GetComponentInChildren<SpriteRenderer>().color = Color.white;
         if (HealthPoint <= 0)

@@ -3,40 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
+using System;
+
 public class Build : MonoBehaviour
 {
+    public Vector2 index;
+    public List<GroundTile> path;
     public Vector2 downLeftTileIndex;
     public ItemDefinition ItemDefinition;
     public ItemSelection ItemSelection;
+    public float HealthPoint = 100f;
     protected Sprite splash;
-    protected Image information;
-    protected Text nameArea;
     protected string buildingName;
-    protected Button spawn;
-    private Vector2 spawnAreaLimits = new Vector2(6,6);
-    // get the information panel elements
+    private Vector2 spawnAreaLimits = new Vector2(6, 6);
+
     protected virtual void Start()
     {
         ItemSelection = FindObjectOfType<ItemSelection>();
-        //information = UIManager.instance.informationImage;
-        //nameArea = UIManager.instance.informationText;
-        //spawn = UIManager.instance.spawn;
+    }
+    protected void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            // move unit to unit
+            GameManager.instance.destinationIndex = Spawn();
+            //Destroy(fakeUnit);
+
+            GameManager.instance.HandleMovement();
+
+
+        }
+    }
+    public Vector2 Spawn()
+    {
+        // get a spawn location from the spawner building
+        GameObject spawnLocation = GetSpawnLocation();
+        if (spawnLocation == null)
+        {
+            return Vector2.zero;
+        }
+        // spawn unit
+        GameObject fakeUnit = new GameObject("Targetpos");
+        fakeUnit.transform.position = spawnLocation.transform.position;
+        fakeUnit.AddComponent<Soldier>().CreatorBuild = this;
+        fakeUnit.transform.SetParent(spawnLocation.transform);
+        fakeUnit.GetComponent<Unit>().index = spawnLocation.GetComponent<GroundTile>().index;
+        
+        // set the location flags
+        spawnLocation.GetComponent<GroundTile>().isOccupied = true;
+        spawnLocation.GetComponent<GroundTile>().hasUnit = true;
+        return fakeUnit.GetComponent<Unit>().index;
     }
     // set the information menu
     protected virtual void OnMouseDown()
     {
-
-        //information.gameObject.SetActive(true);
-        //information.sprite = splash;
-        //nameArea.text = buildingName;
         ItemSelection.HandleItemHover(ItemDefinition, gameObject);
     }
     // color when cursor is over the building
     protected void OnMouseEnter()
     {
         transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.green;
-        ItemSelection.HandleItemHover(ItemDefinition, gameObject);
-        
     }
     // reset color when cursor exits
     protected void OnMouseExit()
@@ -54,7 +81,8 @@ public class Build : MonoBehaviour
             spriteRenderer.color = Color.white;
         }
     }
-    public GameObject getSpawnLocation()
+    
+    public GameObject GetSpawnLocation()
     {
         Vector2 spawnpoint = downLeftTileIndex;
         GameObject[,] tileMap = TileManager.instance.tilemap;
@@ -146,5 +174,17 @@ public class Build : MonoBehaviour
             return false;
         }
         return true;
+    }
+    public IEnumerator GetDamage(float damage)
+    {
+        HealthPoint -= damage;
+        GetComponentInChildren<SpriteRenderer>().color = Color.red;
+        transform.DOShakePosition(0.1f, 0.1f, 1, 5);
+        yield return new WaitForSeconds(0.15f);
+        GetComponentInChildren<SpriteRenderer>().color = Color.white;
+        if (HealthPoint <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

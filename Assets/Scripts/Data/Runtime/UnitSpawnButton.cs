@@ -5,18 +5,18 @@ using UnityEngine;
 public class UnitSpawnButton : MonoBehaviour
 {
     public GameObject Unit;
-    // clicked barracks
+    // clicked building
     public GameObject spawnerBuild;
 
     public void Spawn()
     {
-        // get a spawn location from the spawner barracks
-        GameObject spawnLocation = spawnerBuild.GetComponent<Build>().getSpawnLocation();
+        // get a spawn location from the spawner building
+        GameObject spawnLocation = spawnerBuild.GetComponent<Build>().GetSpawnLocation();
         if (spawnLocation == null)
         {
             return;
         }
-        // spawn tank
+        // spawn unit
         GameObject tmpUnit = Instantiate(Unit, spawnLocation.transform.position, spawnLocation.transform.rotation);
         tmpUnit.transform.SetParent(spawnLocation.transform);
         tmpUnit.GetComponent<Unit>().index = spawnLocation.GetComponent<GroundTile>().index;

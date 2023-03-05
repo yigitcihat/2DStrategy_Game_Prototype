@@ -23,7 +23,7 @@ MonoBehaviour:
   _type: 1
   _canDrop: 1
   _canProduce: 1
-  _defination: rfield is the  aircraft production structureucture
+  _defination: Airfield is the  aircraft production structureucture
   _itemDefination: {fileID: 11400000}
   _unitGameobject: {fileID: 8206099384735439573, guid: 60824d1ec25d53444bff3b10a5115a5f, type: 3}
   _position: {x: 0, y: 0}

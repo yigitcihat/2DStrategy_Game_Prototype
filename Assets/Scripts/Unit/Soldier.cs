@@ -7,7 +7,14 @@ public class Soldier : Unit
     protected override void Start()
     {
         base.Start();
-        splash = transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+        if (transform.childCount>0)
+        {
+            if (transform.GetChild(0).TryGetComponent<SpriteRenderer>(out SpriteRenderer renderer))
+            {
+                splash = renderer.sprite;
+            }
+        }
+        
         unitName = "SOLDIER";
     }
 }
