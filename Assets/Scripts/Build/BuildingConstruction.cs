@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class BuildingConstruction : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public static GameObject draggedObject;
+    public GameObject Building;
     public ItemDefinition ItemDefinition;
     private ItemSelection _itemSelection;
     protected GameObject building;
@@ -101,10 +102,12 @@ public class BuildingConstruction : MonoBehaviour, IBeginDragHandler, IDragHandl
             foreach (GameObject tile in chosenGrids)
             {
                 tile.GetComponent<GroundTile>().isOccupied = true;
+                Building.GetComponent<Build>().chosenGrids.Add(tile);
             }
             // put bulding on location
             GameObject tmp = Instantiate(building, initialTile.transform.position, initialTile.transform.rotation);
             tmp.GetComponent<Build>().downLeftTileIndex = initialTile.GetComponent<GroundTile>().index;
+            
         }
         // not a suitable location
         else if (constructableTileCount > 0)

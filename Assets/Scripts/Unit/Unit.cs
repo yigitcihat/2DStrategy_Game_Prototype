@@ -92,17 +92,27 @@ public class Unit : MonoBehaviour
                     if (path[currentIndex].transform.childCount > 0)
                     {
                         Unit targetUnit = path[currentIndex].transform.GetChild(0).GetComponent<Unit>();
-                        Build targetBuild = targetUnit.CreatorBuild;
-                        if (targetBuild != null)
+                        
+                        if (targetUnit != null)
                         {
-                            Debug.Log("Attacked" + targetBuild.gameObject.name);
-                            StartCoroutine(AttackTargetBuilding(targetBuild));
-                            StopCoroutine("MoveOnPath");
-                        }
-                        else if (targetUnit != null)
-                        {
-                            StartCoroutine(AttackTargetUnit(targetUnit));
-                            StopCoroutine("MoveOnPath");
+                            Build targetBuild = targetUnit.CreatorBuild;
+                            if (targetBuild != null)
+                            {
+                                Debug.Log("Attacked" + targetBuild.gameObject.name);
+                                StartCoroutine(AttackTargetBuilding(targetBuild));
+
+                                targetUnit.transform.parent.GetComponent<GroundTile>().isOccupied = false;
+
+                                targetUnit.transform.parent.GetComponent<GroundTile>().hasUnit = false;
+                                Destroy(targetUnit);
+                                StopCoroutine("MoveOnPath");
+                            }
+                            else
+                            {
+                                StartCoroutine(AttackTargetUnit(targetUnit));
+                                StopCoroutine("MoveOnPath");
+                            }
+                            
                         }
                        
                         //Destroy(gameObject);

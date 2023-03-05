@@ -17,7 +17,7 @@ public class Build : MonoBehaviour
     protected Sprite splash;
     protected string buildingName;
     private Vector2 spawnAreaLimits = new Vector2(6, 6);
-
+    public List<GameObject> chosenGrids;
     protected virtual void Start()
     {
         ItemSelection = FindObjectOfType<ItemSelection>();
@@ -185,6 +185,13 @@ public class Build : MonoBehaviour
         if (HealthPoint <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+    private void OnDestroy()
+    {
+        foreach (GameObject tile in chosenGrids)
+        {
+            tile.GetComponent<GroundTile>().isOccupied = false;
         }
     }
 }
