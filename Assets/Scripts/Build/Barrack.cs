@@ -19,17 +19,6 @@ public class Barrack : Build
     {
         base.OnMouseDown();
         ItemSelection.HandleItemHover(ItemDefinition, gameObject);
-        // button active
-        //spawn.gameObject.SetActive(true);
-        //spawn.GetComponent<SpawnButton>().spawnerBarracks = transform.gameObject;
     }
-    // get the unit spawn location
-    // location is determined to be around the building at the first available tile
-    // if all the tiles are occupied, it returns empty
-    // if all the tiles empty it upgrades the first unit found by one
-
-    // check tile if on grid
-    
-    // check tile if on grid
     
 }

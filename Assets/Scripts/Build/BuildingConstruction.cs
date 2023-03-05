@@ -17,10 +17,7 @@ public class BuildingConstruction : MonoBehaviour, IBeginDragHandler, IDragHandl
     private Transform initialParent;
     private List<SpriteRenderer> coloredTiles;
     private GameObject initialTile;
-    private bool isConstructable;
     private int constructableTileCount;
-
-
 
     public virtual void Start()
     {
@@ -28,7 +25,6 @@ public class BuildingConstruction : MonoBehaviour, IBeginDragHandler, IDragHandl
         _itemSelection= FindObjectOfType<ItemSelection>();
     }
     // Drag handlers
-    
     public void OnBeginDrag(PointerEventData eventData)
     {
         draggedObject = gameObject;

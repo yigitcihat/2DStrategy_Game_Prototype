@@ -17,8 +17,8 @@ public class Unit : MonoBehaviour
     protected float speed = 0.02f;
     protected Sprite splash;
     protected string unitName;
-    Unit targetUnit;
-    Build targetBuild;
+    protected Unit targetUnit;
+    protected Build targetBuild;
     protected virtual void Start()
     {
         path = new List<GroundTile>();
@@ -37,7 +37,6 @@ public class Unit : MonoBehaviour
         // rightclick
         else if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("MOve");
             // move unit to unit
             GameManager.instance.destinationIndex = index;
            
@@ -77,7 +76,6 @@ public class Unit : MonoBehaviour
     IEnumerator MoveOnPath()
     {
         int currentIndex = 0;
-
         Vector2 currentPosition = path[currentIndex].transform.position;
         // free the first tile
         TileManager.instance.tilemap[(int)index.x, (int)index.y].GetComponent<GroundTile>().isOccupied = false;
@@ -86,7 +84,6 @@ public class Unit : MonoBehaviour
         // move
         while (true)
         {
-
             if ((Vector2)transform.position == currentPosition)
             {
                 // reset the flags after passing the tile
@@ -105,7 +102,6 @@ public class Unit : MonoBehaviour
                             targetBuild = targetUnit.CreatorBuild;
                             if (targetBuild != null)
                             {
-                                Debug.Log("Attacked" + targetBuild.gameObject.name);
                                 StartCoroutine(AttackTargetBuilding(targetBuild));
 
                                 targetUnit.transform.parent.GetComponent<GroundTile>().isOccupied = false;
@@ -119,16 +115,9 @@ public class Unit : MonoBehaviour
                                 StartCoroutine(AttackTargetUnit(targetUnit));
                                 StopCoroutine("MoveOnPath");
                             }
-                            
                         }
-                       
-                        //Destroy(gameObject);
                     }
                 }
-
-
-
-
                 // path end
                 if (currentIndex >= path.Count)
                 {
@@ -137,12 +126,7 @@ public class Unit : MonoBehaviour
                     path[currentIndex - 1].isOccupied = true;
                     path[currentIndex - 1].hasUnit = true;
                     transform.SetParent(path[currentIndex - 1].transform);
-                    
-                   
                     yield break;
-                    //}
-
-
                 }
                 // set the tile flags when on the tile
                 currentPosition = path[currentIndex].transform.position;
@@ -160,15 +144,12 @@ public class Unit : MonoBehaviour
     }
     IEnumerator AttackTargetUnit(Unit TargetUnit)
     {
-        Debug.Log("Attacked" + TargetUnit.gameObject.name);
-
         while(TargetUnit.HealthPoint > 0)
         {
             StartCoroutine(TargetUnit.GetDamage(AttackPower));
             if (HealthPoint <=0 || TargetUnit.HealthPoint <=0)
             {
                 StopCoroutine("AttackTargetUnit");
-               
             }
             
             yield return new WaitForSeconds(0.3f);
@@ -177,20 +158,15 @@ public class Unit : MonoBehaviour
     }
     IEnumerator AttackTargetBuilding(Build TargetBuild)
     {
-        Debug.Log("Attacked" + TargetBuild.gameObject.name);
-
         while (TargetBuild.HealthPoint > 0)
         {
             StartCoroutine(TargetBuild.GetDamage(AttackPower));
             if (HealthPoint <= 0 || TargetBuild.HealthPoint <= 0)
             {
                 StopCoroutine("AttackTargetBuilding");
-
             }
-
             yield return new WaitForSeconds(0.3f);
         }
-
     }
     public IEnumerator GetDamage(float damage)
     {

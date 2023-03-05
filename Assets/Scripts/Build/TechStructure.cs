@@ -14,7 +14,6 @@ public class TechStructure : Build
     protected override void OnMouseDown()
     {
         base.OnMouseDown();
-        //spawn.gameObject.SetActive(false);
         ItemSelection.HandleItemHover(ItemDefinition, gameObject);
     }
 }

@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using DG.Tweening;
-using System;
 
 public class Build : MonoBehaviour
 {
@@ -27,15 +24,11 @@ public class Build : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             // move unit to unit
-            GameManager.instance.destinationIndex = Spawn();
-            //Destroy(fakeUnit);
-
+            GameManager.instance.destinationIndex = SetTargetLocation();
             GameManager.instance.HandleMovement();
-
-
         }
     }
-    public Vector2 Spawn()
+    public Vector2 SetTargetLocation()
     {
         // get a spawn location from the spawner building
         GameObject spawnLocation = GetSpawnLocation();
@@ -91,7 +84,7 @@ public class Build : MonoBehaviour
         //first candidate grid
         spawnpoint.x--;
         spawnpoint.y--;
-        // check for an empty grid around the barracks
+        // check for an empty grid around the buldings
         for (int i = (int)spawnpoint.x; i < (int)spawnpoint.x + spawnAreaLimits.x; i++)
         {
             int j = (int)spawnpoint.y;
