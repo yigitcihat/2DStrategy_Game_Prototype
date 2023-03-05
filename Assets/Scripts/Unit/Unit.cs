@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour
     public float AttackPower;
     public float HealthPoint = 10f;
     public Build CreatorBuild;
-    protected float speed = 0.02f;
+    protected float speed = 0.1f;
     protected Sprite splash;
     protected string unitName;
     protected Unit targetUnit;
