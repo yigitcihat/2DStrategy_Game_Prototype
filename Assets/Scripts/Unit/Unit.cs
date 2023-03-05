@@ -17,6 +17,8 @@ public class Unit : MonoBehaviour
     protected float speed = 0.02f;
     protected Sprite splash;
     protected string unitName;
+    Unit targetUnit;
+    Build targetBuild;
     protected virtual void Start()
     {
         path = new List<GroundTile>();
@@ -35,6 +37,7 @@ public class Unit : MonoBehaviour
         // rightclick
         else if (Input.GetMouseButtonDown(1))
         {
+            Debug.Log("MOve");
             // move unit to unit
             GameManager.instance.destinationIndex = index;
            
@@ -62,6 +65,10 @@ public class Unit : MonoBehaviour
         {
             path = newPath;
             StopCoroutine("MoveOnPath");
+            if (targetBuild != null)
+                targetBuild.StopCoroutine("GetDamage");
+            if (targetUnit != null)
+                targetUnit.StopCoroutine("GetDamage");
             StartCoroutine("MoveOnPath");
         }
 
@@ -91,11 +98,11 @@ public class Unit : MonoBehaviour
                 {
                     if (path[currentIndex].transform.childCount > 0)
                     {
-                        Unit targetUnit = path[currentIndex].transform.GetChild(0).GetComponent<Unit>();
+                        targetUnit = path[currentIndex].transform.GetChild(0).GetComponent<Unit>();
                         
                         if (targetUnit != null)
                         {
-                            Build targetBuild = targetUnit.CreatorBuild;
+                            targetBuild = targetUnit.CreatorBuild;
                             if (targetBuild != null)
                             {
                                 Debug.Log("Attacked" + targetBuild.gameObject.name);

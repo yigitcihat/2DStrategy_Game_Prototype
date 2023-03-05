@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -104,6 +105,7 @@ public class BuildingConstruction : MonoBehaviour, IBeginDragHandler, IDragHandl
                 tile.GetComponent<GroundTile>().isOccupied = true;
                 Building.GetComponent<Build>().chosenGrids.Add(tile);
             }
+            Building.GetComponent<Build>().chosenGrids.RemoveAll(GameObject => GameObject == null);
             // put bulding on location
             GameObject tmp = Instantiate(building, initialTile.transform.position, initialTile.transform.rotation);
             tmp.GetComponent<Build>().downLeftTileIndex = initialTile.GetComponent<GroundTile>().index;

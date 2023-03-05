@@ -184,14 +184,13 @@ public class Build : MonoBehaviour
         GetComponentInChildren<SpriteRenderer>().color = Color.white;
         if (HealthPoint <= 0)
         {
-            Destroy(gameObject);
+            foreach (GameObject tile in chosenGrids)
+            {
+                tile.GetComponent<GroundTile>().isOccupied = false;
+            }
+            gameObject.SetActive(false);
         }
     }
-    private void OnDestroy()
-    {
-        foreach (GameObject tile in chosenGrids)
-        {
-            tile.GetComponent<GroundTile>().isOccupied = false;
-        }
-    }
+   
+
 }
