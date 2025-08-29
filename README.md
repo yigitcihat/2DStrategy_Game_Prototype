@@ -1,4 +1,4 @@
-# Panteon_Case_Strategy_Game
+# 2D_Strategy_Game_example
 
 ![](https://i.imgur.com/tkGdrKr.png)
 <br>
